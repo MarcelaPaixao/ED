@@ -8,15 +8,15 @@ struct tFilial {
 
 tFilial *CriaFilial(){
     tFilial *filial = malloc (sizeof(tFilial));
-    
     char aux[100];
+    scanf("%*c");
     scanf("%[^,], %d", aux, &filial->qtdProd);
     filial->nome = strdup(aux);
     filial->qtdEstoque = 0;
     
     filial->produtos = malloc(filial->qtdProd * sizeof(tProduto *));
     for(int i=0; i < filial->qtdProd; i++){
-        printf("Digite o nome, valor e qtd do produto %d:\n", i+1);
+        printf("DIGITE O NOME, VALOR E QTD DO PRODUTO %d:\n", i+1);
         filial->produtos[i] = Criaproduto();
         filial->qtdEstoque += RetornaEstoqueProduto(filial->produtos[i]);
     }

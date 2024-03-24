@@ -10,14 +10,14 @@ tSupermercado *CriaSuperMercado(){
     tSupermercado *super = malloc(sizeof(tSupermercado));
     
     char aux[100];
-    printf("Digite o nome e a qtd de filiais do supermercado: \n");
-    scanf("%[^,], %d", aux, &super->qtdFiliais);
+    printf("DIGITE O NOME E A QTD DE FILIAIS DO SUPERMERCADO: \n");
+    scanf("%[^,],%d", aux, &super->qtdFiliais);
     super->nome = strdup(aux);
     super->qtdEstoque = 0;
     
     super->filiais = malloc(super->qtdFiliais * sizeof(tFilial *));
     for(int i=0; i < super->qtdFiliais; i++){
-        printf("Digite o nome e a qtd de itens da filial %d: \n", i+1);
+        printf("\nDIGITE O NOME E A QTD DE ITENS DA FILIAL %d: \n", i+1);
         super->filiais[i] = CriaFilial();
         super->qtdEstoque += RetornaEstoqueFilial(super->filiais[i]);
     }
@@ -26,7 +26,7 @@ tSupermercado *CriaSuperMercado(){
 }
 
 void ImprimeSupermercado(tSupermercado *super){
-    printf("Nome: %s, Estoque Total: %d\n", super->nome, super->qtdEstoque);
+    printf("\nNome: %s, Estoque Total: %d\n", super->nome, super->qtdEstoque);
     for(int i=0; i < super->qtdFiliais; i++){
         ImprimeFilial(super->filiais[i]);
     }

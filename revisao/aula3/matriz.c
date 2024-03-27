@@ -98,9 +98,13 @@ Matriz* transposta (Matriz* mat);
  * pos-condicao: mat1 e mat2 n„o s„o modificadas e a matriz multiplicacao existe
  */
 Matriz* multiplicacao (Matriz* mat1, Matriz* mat2){
+    Matriz *mat3 = NULL;
     if(mat1 && mat2 && mat1->col == mat2->lin){
-        
+        mat3 = calloc(mat1->lin * mat2->col, sizeof(int));
+        mat3->lin = mat1->lin;
+        mat3->col = mat2->col;
     }
+    return mat3;
 }
 
 /*Imprime a matriz
@@ -121,12 +125,10 @@ void imprimeMatriz(Matriz* mat){
 
 void imprimeLinhas (Matriz* mat, int indice){
     if(!mat) return;
-    for(int i = mat->col*indice; i < mat->lin; i++){
-        for(int j=0; j < mat->col; j++){
-            printf("%d ", mat->vet[(mat->col*i)+j]);
-        }
-        printf("\n");
+    for(int j=0; j < mat->col; j++){
+        printf("%d ", mat->vet[(mat->col*indice)+j]);
     }
+    printf("\n");
 }
 
 void destroiMatriz (Matriz* mat){

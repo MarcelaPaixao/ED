@@ -5,9 +5,9 @@
 
 //Tipo matriz (tipo opaco)
 //Estrutura interna do tipo deve ser definida na implementaÁ„o do TAD
- struct matriz {
+struct matriz {
     int col, lin, *vet;
- };
+};
 
 /*Inicializa uma matriz de nlinhas e ncolunas
  * inputs: nlinhas (no de linhas) e ncolunas (no de colunas)
@@ -89,7 +89,7 @@ int recuperaNLinhas (Matriz* mat){
  * pos-condicao: mat n„o È modificada e matriz transposta existe
  */
 Matriz* transposta (Matriz* mat){
-    if(!mat) return;
+    if(!mat) return NULL;
     Matriz *transposta =  malloc(sizeof(Matriz));
     transposta->lin = mat->col;
     transposta->col = mat->lin;

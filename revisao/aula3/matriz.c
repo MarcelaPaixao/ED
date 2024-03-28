@@ -88,7 +88,22 @@ int recuperaNLinhas (Matriz* mat){
  * pre-condicao: matriz mat existe
  * pos-condicao: mat n„o È modificada e matriz transposta existe
  */
-Matriz* transposta (Matriz* mat);
+Matriz* transposta (Matriz* mat){
+    if(!mat) return;
+    Matriz *transposta =  malloc(sizeof(Matriz));
+    transposta->lin = mat->col;
+    transposta->col = mat->lin;
+
+    transposta->vet = calloc(transposta->lin * transposta->col, sizeof(int));
+
+    for(int i=0; i < mat->lin; i++){
+        for(int j=0; j < mat->col; j++){
+            transposta->vet[(transposta->col*j)+i] = mat->vet[(mat->col*i)+j];
+        }
+    }
+
+    return transposta;
+}
 
 /*Retorna a matriz multiplicacao entre mat1 e mat2
  * inputs: as matrizes mat1 e mat2
@@ -100,10 +115,21 @@ Matriz* transposta (Matriz* mat);
 Matriz* multiplicacao (Matriz* mat1, Matriz* mat2){
     Matriz *mat3 = NULL;
     if(mat1 && mat2 && mat1->col == mat2->lin){
-        mat3 = calloc(mat1->lin * mat2->col, sizeof(int));
+        mat3 = malloc(sizeof(Matriz));
         mat3->lin = mat1->lin;
         mat3->col = mat2->col;
+        
+        mat3->vet = calloc(mat3->lin * mat3->col, sizeof(int));
+
+        for(int i=0; i < mat3->lin; i++){
+            for(int j=0; j < mat3->col; j++){
+                for(int k=0; k < mat1->col; k++){
+                    mat3->vet[(mat3->col*i)+j] += mat1->vet[(mat1->col*i)+k] + mat2->vet[(mat2->col*k)+j];
+                }
+            }
+        }
     }
+    
     return mat3;
 }
 

@@ -65,10 +65,9 @@ tLista *RetiraItemCodigo(tLista *lista, int cod){
 }
 
 void ImprimeLista(tLista *lista){
-    tCelula *aux = lista->prim;
-    while(aux){
-        ImprimeProduto(aux->prod);
-        aux = aux->prox;
+    while(lista){
+        ImprimeProduto(lista->prod);
+        lista = lista->prox;
     }
 }
 

@@ -8,19 +8,14 @@ Tarefas:
 #include <stdlib.h>
 #include "tProduto.h"
 
-typedef struct tLista tLista;
-
 typedef struct tCelula tCelula;
 
 tLista *CriaLista();
 
-void InsereItemNaLista(tLista *lista, tProduto *p);
+tLista *InsereItemNaLista(tLista *lista, tProduto *p);
 
-void RetiraItemCodigo(tLista *lista, int cod);
+tLista *RetiraItemCodigo(tLista *lista, int cod);
 
 void ImprimeLista(tLista *lista);
 
 void LiberaLista(tLista *lista);
-
-
-

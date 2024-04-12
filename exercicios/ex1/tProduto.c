@@ -3,15 +3,17 @@
 struct tProduto {
     char *nome;
     int codigo;
-    float preco
+    float preco;
 };
 
 tProduto *CriaProduto(){
     tProduto *p = (tProduto *)malloc(sizeof(tProduto));
     char nome[100];
-
+    
     printf("Digite o nome do produto: ");
-    scanf("%[^\n]\n", nome);
+    scanf("%*c");
+    scanf("%[^\n]", nome);
+    scanf("%*c");
     p->nome = strdup(nome);
 
     printf("Digite o codigo do produto: ");

@@ -1,43 +1,40 @@
 #include "tLista.h"
 
-typedef tCelula tLista;
-
 struct tCelula {
     tProduto *prod;
     tCelula *prox, *ant;
 };
 
 tLista *CriaLista(){
-    tLista *lista = (tLista *)malloc(sizeof(tLista));
-    if(!lista){
-        printf("Erro na alocacao da lista!");
-        exit(1);
-    }
-    lista = NULL;
+    tLista *lista = NULL;
     return lista;
 }
 
 tLista *InsereItemNaLista(tLista *lista, tProduto *p){
-    if(!p) return;
+    if(!p) return lista;
     tCelula *cel = (tCelula *)malloc(sizeof(tCelula));
     
     cel->prod = p;
-    cel->prox = lista;
     cel->ant = NULL;
+    cel->prox = NULL;
     
-    if(lista){
-        lista->ant = cel;
+    if(!lista){;
+        return cel; //a própria célula já será o 1 elemento da lista
     }
-    lista = cel;
-
-    return lista;
+    
+    cel->prox = lista;
+    lista->ant = cel;
+    
+    return cel; //retorna o 1 elemento da lista
 }
 
 tLista *RetiraItemCodigo(tLista *lista, int cod){
+    if(!lista) return NULL;
     tCelula *aux = lista;
+    
     while(aux){
         if(RetornaCodigo(aux->prod) == cod){
-            if(aux == lista && lista->prox == NULL){ //se for primeiro e ultimo
+            if(aux == lista && lista->prox == NULL){ //se for único
                 LiberaProduto(aux->prod);
                 free(aux);
                 lista = NULL;
@@ -45,15 +42,16 @@ tLista *RetiraItemCodigo(tLista *lista, int cod){
             }
             else if(aux == lista){//se for o primeiro
                 lista = lista->prox;
-                lista->ant = NULL;
+                if(lista != NULL){
+                    lista->ant = NULL;
+                }
             }
-            else if(lista->ant != NULL && lista->prox != NULL){
-                lista->ant->prox = aux->prox;
-                lista->prox->ant = aux->ant;                
+            else if(aux->ant != NULL && aux->prox != NULL){ //se não for único, nem primeiro e nem último
+                aux->ant->prox = aux->prox;
+                aux->prox->ant = aux->ant;                
             }
-            else {
-                lista->ant->prox = NULL;
-               
+            else { //se for o último
+                aux->ant->prox = NULL;
             }
             LiberaProduto(aux->prod);
             free(aux);
@@ -65,63 +63,28 @@ tLista *RetiraItemCodigo(tLista *lista, int cod){
 }
 
 void ImprimeLista(tLista *lista){
+    int i=1;
+    if(!lista){
+        printf("Lista vazia!\n");
+        return;
+    }
     while(lista){
+        printf("PRODUTO %d\n", i);
         ImprimeProduto(lista->prod);
         lista = lista->prox;
+        printf("\n");
+        i++;
     }
 }
 
 void LiberaLista(tLista *lista){
     if(!lista) return;
-   
-    tCelula *p, *pos;
-}
+    tCelula *prox;
 
-
-void InsereItemNaLista(tLista *lista, tProduto *p){
-    if(!p) return;
-    tCelula *cel = (tCelula *)malloc(sizeof(tCelula));
-    cel->prod = p;
-    cel->prox = NULL;
-    if(lista == NULL){
-        lista = lista->prim = cel;
+    while(lista){
+        prox = lista->prox;
+        LiberaProduto(lista->prod);
+        free(lista);
+        lista = prox;
     }
-    else{
-        lista->prox = cel;
-        lista = cel;
-    }
-    lista->prod = p;
-}
-
-void RetiraItemCodigo(tLista *lista, int cod){
-    tCelula *ant = NULL;
-    tCelula *aux = lista->prim;
-    while(aux){
-        if(RetornaCodigo(aux->prod) == cod){
-            if(aux == lista->prim){
-                lista->prim = aux->prox;
-            }
-            else if(aux == lista){
-                lista = ant;
-            }
-            free(aux);
-            return;
-        }
-        ant = aux;
-        aux = aux->prox;
-    }
-}
-
-void ImprimeLista(tLista *lista){
-    tCelula *aux = lista->prim;
-    while(aux){
-        ImprimeProduto(aux->prod);
-        aux = aux->prox;
-    }
-}
-
-void LiberaLista(tLista *lista){
-    if(!lista) return;
-   
-    tCelula *p, *pos;
 }

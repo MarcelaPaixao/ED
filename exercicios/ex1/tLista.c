@@ -41,11 +41,20 @@ void RetiraItemCodigo(tLista *lista, int cod){
     tCelula *aux = lista->prim;
     while(aux){
         if(RetornaCodigo(aux->prod) == cod){
-            if(aux == lista->prim){
-                lista->prim = aux->prox;
+            if(aux == lista->prim && aux == lista->ult){
+                lista->prim = lista->ult = NULL;
+                free(aux);
+                return;
             }
-            else if(aux == lista->ult){
+            if(aux == lista->prim){
+                lista->prim = aux->prox;//isso é o msm que lista->prim = lista->prim->prox  ????
+            }
+            if(aux == lista->ult){
                 lista->ult = ant;
+                ant->prox = NULL;
+            }
+            else {
+                ant->prox = aux->prox;
             }
             free(aux);
             return;
@@ -57,14 +66,25 @@ void RetiraItemCodigo(tLista *lista, int cod){
 
 void ImprimeLista(tLista *lista){
     tCelula *aux = lista->prim;
+    int i=1;
     while(aux){
+        printf("PRODUTO %d\n", i);
         ImprimeProduto(aux->prod);
         aux = aux->prox;
+        printf("\n");
+        i++;
     }
 }
 
 void LiberaLista(tLista *lista){
     if(!lista) return;
-   
-    tCelula *p, *pos;
+    tCelula *atual, *prox;
+    atual = lista->prim;
+    while(atual){
+        prox = atual->prox;
+        LiberaProduto(atual->prod);
+        free(atual);
+        atual = prox;
+    }
+    free(lista);
 }

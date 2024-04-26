@@ -20,7 +20,13 @@ void atribuiNivelAgressividadeCachorro(Cachorro *c, int agr){
 }
 
 void imprimeCachorro(Cachorro *c){
-    printf("Nome: %s, Nivel de agresividade: %d\n", c->nome, c->nivelAgr);
+    printf("Nome: %s, Nivel de agresividade:", c->nome);
+    if(c->nivelAgr == MANSO){
+        printf("Manso\n");
+    }
+    else {
+        printf("Bravo\n");
+    }
 }
 
 void liberaCachorro(Cachorro *c){
@@ -28,4 +34,8 @@ void liberaCachorro(Cachorro *c){
         free(c->nome);
         free(c);
     }
+}
+
+int retornaNivelAgrCao(Cachorro *c){
+    return c->nivelAgr;
 }

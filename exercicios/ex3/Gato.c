@@ -20,7 +20,13 @@ void atribuiNivelAgressividadeGato(Gato *g, int agr){
 }
 
 void imprimeGato(Gato *g){
-    printf("Nome: %s, Nivel de agresividade: %d\n", g->nome, g->nivelAgr);
+    printf("Nome: %s, Nivel de agresividade:", g->nome);
+    if(g->nivelAgr == MANSO){
+        printf("Manso\n");
+    }
+    else {
+        printf("Bravo\n");
+    }
 }
 
 void liberaGato(Gato *g){
@@ -28,4 +34,8 @@ void liberaGato(Gato *g){
         free(g->nome);
         free(g);
     }
+}
+
+int retornaNivelAgrGato(Gato *g){
+    return g->nivelAgr;
 }

@@ -9,6 +9,8 @@
 
 #include <stdio.h>
 #include "BanhoTosa.h"
+#include "Cachorro.h"
+#include "Gato.h"
 
 
 int main(int argc, const char * argv[]) {

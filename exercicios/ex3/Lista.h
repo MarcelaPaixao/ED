@@ -11,11 +11,13 @@ typedef struct Lista Lista;
 
 Lista *inicLista();
 
-void insereAnimal(Lista *lista, void *animal);
+void insereAnimal(Lista *lista, void *animal, int tipo);
 
 void retiraAnimal(Lista *lista, void *animal);
 
 void imprimeLista(Lista *lista);
+
+int buscaAnimalNaLista(Lista *lista, void *animal);
 
 void liberaLista(Lista *lista);
 

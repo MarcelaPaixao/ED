@@ -12,9 +12,6 @@
 #include "Gato.h"
 #include "Cachorro.h"
 
-#define MANSO 1
-#define BRAVO 2
-
 /*Tipo que define a loja de banho e tosa (tipo opaco)
  *Cada loja deve ter os seguintes atributos:
  * * Nome da loja

@@ -19,21 +19,53 @@ struct banhotosa {
 * output: loja alocada e vazia, com listas de animais ainda vazias
 * pre-condicao: nao tem
 * pos-condicao: loja alocada e vazia, com listas de animais criadas e vazias  */
-BanhoTosa* inicBanhoTosa(char* nome);
+BanhoTosa* inicBanhoTosa(char* nome){
+    BanhoTosa *loja = malloc(sizeof(BanhoTosa));
+    if(!loja){
+        return NULL;
+    }
+    loja->nome = strdup(nome);
+    loja->lAgressivos = inicLista();
+    loja->lMansos = inicLista();
+
+    return loja;
+}
 
 /* Insere o cachorro em uma das listas de animais, dependendo do seu nível de agressividade
 * inputs: referência para a loja e a referência para o animal
 * output: nenhum
 * pre-condicao: loja alocada e animal alocado
 * pos-condicao: loja contém o animal e uma de suas listas, dependendo do nível de agressividade do animal  */
-void cadastraCachorro(BanhoTosa* loja, Cachorro* dog);
+void cadastraCachorro(BanhoTosa* loja, Cachorro* dog){
+    if(!dog || !loja)return;
+
+    int agr = retornaNivelAgrCao(dog);
+
+    if(agr == MANSO){
+        insereAnimal(loja->lMansos, dog, agr);
+    }
+    else {
+        insereAnimal(loja->lAgressivos, dog, agr);
+    }
+}
 
 /* Insere o cachorro em uma das listas de animais, dependendo do seu nível de agressividade
 * inputs: referência para a loja e a referência para o animal
 * output: nenhum
 * pre-condicao: loja alocada e animal alocado
 * pos-condicao: loja contém o animal e uma de suas listas, dependendo do nível de agressividade do animal  */
-void cadastraGato(BanhoTosa* loja, Gato* cat);
+void cadastraGato(BanhoTosa* loja, Gato* cat){
+    if(!cat || !loja)return;
+    
+    int agr = retornaNivelAgrGato(cat);
+    
+    if(agr == MANSO){
+        insereAnimal(loja->lMansos, cat, agr);
+    }
+    else {
+        insereAnimal(loja->lAgressivos, cat, agr);
+    }
+}
 
 
 /* Essa função atualiza a situação de um gato na loja. Caso ele esteja na lista errada, ele é devidamente MOVIDO para a lista correta.
@@ -41,14 +73,48 @@ void cadastraGato(BanhoTosa* loja, Gato* cat);
 * output: nenhum
 * pre-condicao: loja alocada e animal alocado
 * pos-condicao: animal deve estar na lista correta, de acordo com seu nível de agressividade */
-void atualizaSituacaoGato(BanhoTosa* loja, Gato* cat);
+void atualizaSituacaoGato(BanhoTosa* loja, Gato* cat){
+    if(!cat || !loja)return;
+
+    int agr = retornaNivelAgrGato(cat);
+    
+    if(agr == MANSO){
+        if(buscaAnimalNaLista(loja->lAgressivos, cat)){
+            insereAnimal(loja->lMansos, cat, agr);
+            retiraAnimal(loja->lAgressivos, cat);
+        }
+    }
+    else {
+        if(buscaAnimalNaLista(loja->lMansos, cat)){
+            insereAnimal(loja->lAgressivos, cat, agr);
+            retiraAnimal(loja->lMansos, cat);
+        }
+    }
+}//se inverter a ordem das funções insere e retira vai dar problema?
 
 /* Essa função atualiza a situação de um cachorro na loja. Caso ele esteja na lista errada, ele é devidamente MOVIDO para a lista correta.
 * inputs: referência para a loja e a referência para o animal
 * output: nenhum
 * pre-condicao: loja alocada e animal alocado
 * pos-condicao: animal deve estar na lista correta, de acordo com seu nível de agressividade */
-void atualizaSituacaoCachorro(BanhoTosa* loja, Cachorro* dog);
+void atualizaSituacaoCachorro(BanhoTosa* loja, Cachorro* dog){
+    if(!dog || !loja)return;
+
+    int agr = retornaNivelAgrCao(dog);
+    
+    if(agr == MANSO){
+        if(buscaAnimalNaLista(loja->lAgressivos, dog)){
+            insereAnimal(loja->lMansos, dog, agr);
+            retiraAnimal(loja->lAgressivos, dog);
+        }
+    }
+    else {
+        if(buscaAnimalNaLista(loja->lMansos, dog)){
+            insereAnimal(loja->lAgressivos, dog, agr);
+            retiraAnimal(loja->lMansos, dog);
+        }
+    }
+}
 
 
 /* Imprime os dados da Loja (nome, e conteúdo das listas)
@@ -56,7 +122,16 @@ void atualizaSituacaoCachorro(BanhoTosa* loja, Cachorro* dog);
 * output: nenhum
 * pre-condicao: loja alocada
 * pos-condicao: nenhuma alteração feita nos conteúdos das estruturas de dados */
-void imprimeBanhoTosa(BanhoTosa* loja);
+void imprimeBanhoTosa(BanhoTosa* loja){
+    if(!loja)return;
+    printf("Nome loja:%s\n", loja->nome);
+    
+    printf("Lista de animais agressivos:\n");
+    imprimeLista(loja->lAgressivos);
+    
+    printf("Lista de animais mansos:\n");
+    imprimeLista(loja->lMansos);
+}
 
 
 /* Calcula o valor que a loja vai receber caso todos os animais tomem banho.
@@ -65,7 +140,10 @@ void imprimeBanhoTosa(BanhoTosa* loja);
 * output: valor da receita
 * pre-condicao: loja alocada
 * pos-condicao: nenhuma alteração feita nos conteúdos das estruturas de dados */
-float calculaReceita(BanhoTosa* loja);
+float calculaReceita(BanhoTosa* loja){
+    if(!loja) return 0;
+    
+}
 
 
 /* Libera toda a memória alocada

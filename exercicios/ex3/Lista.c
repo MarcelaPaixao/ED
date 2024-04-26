@@ -88,6 +88,19 @@ void imprimeLista(Lista *lista){
     }
 }
 
+int buscaAnimalNaLista(Lista *lista, void *animal){
+    if(!lista) return;
+    cel *p = lista->prim;
+
+    while(p){
+        if(p->animal == animal){
+            return 1;
+        }
+        p = p->prox;
+    }
+    return 0;
+}
+
 void liberaLista(Lista *lista){
     if(!lista) return;
     cel *atual, *prox;

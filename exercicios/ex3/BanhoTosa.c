@@ -44,7 +44,7 @@ void cadastraCachorro(BanhoTosa* loja, Cachorro* dog){
     if(agr == MANSO){
         insereAnimal(loja->lMansos, dog, agr);
     }
-    else {
+    else if(agr == BRAVO){
         insereAnimal(loja->lAgressivos, dog, agr);
     }
 }
@@ -62,7 +62,7 @@ void cadastraGato(BanhoTosa* loja, Gato* cat){
     if(agr == MANSO){
         insereAnimal(loja->lMansos, cat, agr);
     }
-    else {
+    else if(agr == BRAVO){
         insereAnimal(loja->lAgressivos, cat, agr);
     }
 }
@@ -124,7 +124,7 @@ void atualizaSituacaoCachorro(BanhoTosa* loja, Cachorro* dog){
 * pos-condicao: nenhuma alteração feita nos conteúdos das estruturas de dados */
 void imprimeBanhoTosa(BanhoTosa* loja){
     if(!loja)return;
-    printf("Nome loja:%s\n", loja->nome);
+    printf("Nome da loja:%s\n", loja->nome);
     
     printf("Lista de animais agressivos:\n");
     imprimeLista(loja->lAgressivos);
@@ -142,7 +142,16 @@ void imprimeBanhoTosa(BanhoTosa* loja){
 * pos-condicao: nenhuma alteração feita nos conteúdos das estruturas de dados */
 float calculaReceita(BanhoTosa* loja){
     if(!loja) return 0;
+    float receita=0;
+    int qtdDog, qtdCat;
     
+    retornaQtdCadaAnimal(loja->lMansos, &qtdDog, &qtdCat);
+    receita += (50 * qtdDog) + (40 * qtdCat);
+
+    retornaQtdCadaAnimal(loja->lAgressivos, &qtdDog, &qtdCat);
+    receita += (55 * qtdDog) + (45 * qtdCat);
+
+    return receita;
 }
 
 
@@ -151,4 +160,10 @@ float calculaReceita(BanhoTosa* loja){
 * output: não tem
 * pre-condicao: loja alocada
 * pos-condicao: Toda a memória liberada, a não ser gatos e cachorros, que são responsabilidade do cliente. */
-void liberaBanhoTosa(BanhoTosa* loja);
+void liberaBanhoTosa(BanhoTosa* loja){
+    if(!loja) return;
+    free(loja->nome);
+    liberaLista(loja->lAgressivos);
+    liberaLista(loja->lMansos);
+    free(loja);
+}

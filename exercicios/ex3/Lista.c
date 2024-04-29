@@ -26,7 +26,7 @@ Lista *inicLista(){
 }
 
 void insereAnimal(Lista *lista, void *animal, int tipo){
-    if(!animal) return lista;
+    if(!animal) return;
     
     cel *nova = malloc(sizeof(cel));
     nova->animal = animal;
@@ -38,8 +38,6 @@ void insereAnimal(Lista *lista, void *animal, int tipo){
     }
     lista->ult->prox = nova;
     lista->ult = nova;
-    
-    return lista;
 }
 
 void retiraAnimal(Lista *lista, void *animal){
@@ -89,7 +87,7 @@ void imprimeLista(Lista *lista){
 }
 
 int buscaAnimalNaLista(Lista *lista, void *animal){
-    if(!lista) return;
+    if(!lista) return 0;
     cel *p = lista->prim;
 
     while(p){
@@ -99,6 +97,20 @@ int buscaAnimalNaLista(Lista *lista, void *animal){
         p = p->prox;
     }
     return 0;
+}
+void retornaQtdCadaAnimal(Lista *lista, int *dog, int *cat){
+    if(!lista) return;
+    cel *p = lista->prim;
+    *dog = 0, *cat = 0;
+    while(p){
+        if(p->tipo == CACHORRO){
+            *dog = *dog + 1;
+        }
+        else {
+            *cat = *cat + 1;
+        }
+        p = p->prox;
+    }
 }
 
 void liberaLista(Lista *lista){

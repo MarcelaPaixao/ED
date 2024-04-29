@@ -19,6 +19,8 @@ void imprimeLista(Lista *lista);
 
 int buscaAnimalNaLista(Lista *lista, void *animal);
 
+void retornaQtdCadaAnimal(Lista *lista, int *dog, int *cat);
+
 void liberaLista(Lista *lista);
 
 #endif /* Lista_h */

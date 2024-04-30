@@ -1,8 +1,5 @@
 #include "Lista.h"
 
-#define CACHORRO 0
-#define GATO 1
-
 typedef struct cel cel;
 
 struct cel{
@@ -104,10 +101,10 @@ void retornaQtdCadaAnimal(Lista *lista, int *dog, int *cat){
     *dog = 0, *cat = 0;
     while(p){
         if(p->tipo == CACHORRO){
-            *dog = *dog + 1;
+            (*dog)++;
         }
-        else {
-            *cat = *cat + 1;
+        else if(p->tipo == GATO){
+            (*cat)++;
         }
         p = p->prox;
     }

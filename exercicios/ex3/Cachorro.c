@@ -11,7 +11,7 @@ Cachorro *inicCachorro(char *nome, int agr){
         return NULL;
     }
     c->nome = strdup(nome);
-    c->nivelAgr = 0;
+    c->nivelAgr = agr;
 }
 
 void atribuiNivelAgressividadeCachorro(Cachorro *c, int agr){

@@ -42,10 +42,10 @@ void cadastraCachorro(BanhoTosa* loja, Cachorro* dog){
     int agr = retornaNivelAgrCao(dog);
 
     if(agr == MANSO){
-        insereAnimal(loja->lMansos, dog, agr);
+        insereAnimal(loja->lMansos, dog, CACHORRO);
     }
     else if(agr == BRAVO){
-        insereAnimal(loja->lAgressivos, dog, agr);
+        insereAnimal(loja->lAgressivos, dog, CACHORRO);
     }
 }
 
@@ -58,12 +58,12 @@ void cadastraGato(BanhoTosa* loja, Gato* cat){
     if(!cat || !loja)return;
     
     int agr = retornaNivelAgrGato(cat);
-    
+
     if(agr == MANSO){
-        insereAnimal(loja->lMansos, cat, agr);
+        insereAnimal(loja->lMansos, cat, GATO);
     }
     else if(agr == BRAVO){
-        insereAnimal(loja->lAgressivos, cat, agr);
+        insereAnimal(loja->lAgressivos, cat, GATO);
     }
 }
 
@@ -80,13 +80,13 @@ void atualizaSituacaoGato(BanhoTosa* loja, Gato* cat){
     
     if(agr == MANSO){
         if(buscaAnimalNaLista(loja->lAgressivos, cat)){
-            insereAnimal(loja->lMansos, cat, agr);
+            insereAnimal(loja->lMansos, cat, GATO);
             retiraAnimal(loja->lAgressivos, cat);
         }
     }
     else {
         if(buscaAnimalNaLista(loja->lMansos, cat)){
-            insereAnimal(loja->lAgressivos, cat, agr);
+            insereAnimal(loja->lAgressivos, cat, GATO);
             retiraAnimal(loja->lMansos, cat);
         }
     }
@@ -104,13 +104,13 @@ void atualizaSituacaoCachorro(BanhoTosa* loja, Cachorro* dog){
     
     if(agr == MANSO){
         if(buscaAnimalNaLista(loja->lAgressivos, dog)){
-            insereAnimal(loja->lMansos, dog, agr);
+            insereAnimal(loja->lMansos, dog, CACHORRO);
             retiraAnimal(loja->lAgressivos, dog);
         }
     }
     else {
         if(buscaAnimalNaLista(loja->lMansos, dog)){
-            insereAnimal(loja->lAgressivos, dog, agr);
+            insereAnimal(loja->lAgressivos, dog, CACHORRO);
             retiraAnimal(loja->lMansos, dog);
         }
     }
@@ -124,7 +124,7 @@ void atualizaSituacaoCachorro(BanhoTosa* loja, Cachorro* dog){
 * pos-condicao: nenhuma alteração feita nos conteúdos das estruturas de dados */
 void imprimeBanhoTosa(BanhoTosa* loja){
     if(!loja)return;
-    printf("Nome da loja:%s\n", loja->nome);
+    printf("Nome da loja: %s\n", loja->nome);
     
     printf("Lista de animais agressivos:\n");
     imprimeLista(loja->lAgressivos);
@@ -146,10 +146,10 @@ float calculaReceita(BanhoTosa* loja){
     int qtdDog, qtdCat;
     
     retornaQtdCadaAnimal(loja->lMansos, &qtdDog, &qtdCat);
-    receita += (50 * qtdDog) + (40 * qtdCat);
+    receita = (40 * qtdDog) + (30 * qtdCat);
 
     retornaQtdCadaAnimal(loja->lAgressivos, &qtdDog, &qtdCat);
-    receita += (55 * qtdDog) + (45 * qtdCat);
+    receita += (45 * qtdDog) + (35 * qtdCat);
 
     return receita;
 }

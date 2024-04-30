@@ -7,6 +7,9 @@
 #include "Gato.h"
 #include "Cachorro.h"
 
+#define CACHORRO 0
+#define GATO 1
+
 typedef struct Lista Lista;
 
 Lista *inicLista();

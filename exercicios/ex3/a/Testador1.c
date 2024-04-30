@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include "BanhoTosa.h"
 
+#define MANSO 1
+#define BRAVO 2
+
 int main(int argc, const char * argv[]) {
 
     //cadastra uns cachorrinhos e gatinhos
@@ -33,7 +36,7 @@ int main(int argc, const char * argv[]) {
     
     //imprime tudo
     imprimeBanhoTosa(loja);
-    
+
     //calcula valor a receber
     float valor = calculaReceita(loja);
     printf("\nValor a Receber %.2f", valor);

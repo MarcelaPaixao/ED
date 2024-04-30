@@ -11,7 +11,7 @@ Gato *inicGato(char *nome, int agr){
         return NULL;
     }
     g->nome = strdup(nome);
-    g->nivelAgr = 0;
+    g->nivelAgr = agr;
 }
 
 void atribuiNivelAgressividadeGato(Gato *g, int agr){

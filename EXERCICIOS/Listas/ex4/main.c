@@ -11,7 +11,7 @@ void ImprimeMenu(){
 }
 
 int main(){
-    tLista *lista = CriaLista();
+    Lista *lista = CriaLista();
     int option=0;
 
     while(option != 3){

@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "random": "c",
-        "cachorro.h": "c"
+        "cachorro.h": "c",
+        "tproduto.h": "c"
     }
 }

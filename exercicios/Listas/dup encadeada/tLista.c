@@ -1,3 +1,4 @@
+//LISTA DUPLAMENTE ENCADEADA SEM SENTINELA
 #include "tLista.h"
 
 struct tCelula {

@@ -1,3 +1,4 @@
+//LISTA SIMPLESMENTE ENCADEADA COM SENTINELA
 #include "tLista.h"
 
 struct tLista {

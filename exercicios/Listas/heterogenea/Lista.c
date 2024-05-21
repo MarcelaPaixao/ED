@@ -1,3 +1,4 @@
+//LISTA HETEROGÊNEA COM SENTINELA (SIMPLESMENTE ENC)
 #include "Lista.h"
 
 typedef struct cel cel;

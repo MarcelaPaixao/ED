@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "random": "c",
         "cachorro.h": "c",
-        "tproduto.h": "c"
+        "tproduto.h": "c",
+        "stdlib.h": "c"
     }
 }

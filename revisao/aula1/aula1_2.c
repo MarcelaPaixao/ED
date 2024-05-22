@@ -18,7 +18,7 @@ int raizes(float a, float b, float c, float* x1, float* x2){
     *x2 = ((-1*b) - sqrt(delta))/(2*a);
     return 1;
 }
-
+ 
 int pares (int n, int* vet){
     int qtdPares=0;
     for(int i=0; i < n; i++){

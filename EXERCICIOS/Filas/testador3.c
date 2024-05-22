@@ -63,7 +63,6 @@ int main(int argc, const char * argv[]) {
     processaLoteAmostras(jPenha);
     
     imprimePosto(jPenha);
-    
 
     //libera toda a memória alocada
     liberaPosto(jcamburi);

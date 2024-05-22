@@ -28,16 +28,16 @@ int main() {
     lista = Retira(lista, "Gabriel");
     lista = Retira(lista, "Eduardo");
 
-    message = "\nAlguns alunos se cansaram do Natal e resolveram abandonar o Papai Noel.\n";
+    message = "\nOs alunos se cansaram do Natal e resolveram abandonar o Papai Noel.\n";
     print_char_by_char(message);
-    message = "\nEspera! Ainda tem alguem la!!\nParece que sobrou apenas o seu fa supremo: ";
+    message = "\nESPERA! Ainda tem alguem la!!\nParece que sobrou apenas o seu fa supremo:\n";
     print_char_by_char(message);
     
     Imprime(lista);
     
     message = "\nTambem conhecido como... ";
     print_char_by_char(message);
-    message = "\nTODJUNIOR!!!\n";
+    message = "\n    TODJUNIOR!!!\n";
     print_char_by_charLowSpeed(message);
     
     message = "----------------- Feliz Natal Trivial! -----------------\n\n";

@@ -54,6 +54,7 @@ void imprimePosto(Posto* posto){
     if(!posto) return;
     printf("Dados do Posto: %s\n", posto->nome);
     printf("Amostras não processadas\n");
+    
     ImprimeFila(posto->naoProcessado);
 
     printf("\nAmostras com resultados positivos\n");
@@ -91,7 +92,7 @@ void realizaColeta(Posto* posto, char* pessoa, int idade) {
 * pos-condicao: amostras foram devidamente processadas; fila de amostras não processadas deve ficar vazia; fila de amostras positivas deve conter as amostras que testaram positivo (idosos na frente); fila de amostras negativas deve conter as amostras que testaram negativo (idosos na frente).
  */
 void processaLoteAmostras(Posto* posto){
-    while(posto->naoProcessado){
+    while(!EstaVaziaFila(posto->naoProcessado)){
         Amostra *a = RetiraAmostra(posto->naoProcessado);
         if(retornaCargaViral(a) >= LIMITE_CARGA_VIRAL){
             registraResultado(a, POS);

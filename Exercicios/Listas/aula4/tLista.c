@@ -15,7 +15,7 @@ struct cel {
 Lista *CriaLista(){
     Lista *l = malloc(sizeof(Lista));
     if(!l){
-        printf("Errof na alocacao da lista!\n");
+        printf("Erro na alocacao da lista!\n");
         return NULL;
     }
     l->prim = l->ult = NULL;   

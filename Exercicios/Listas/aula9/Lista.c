@@ -6,21 +6,20 @@ struct Cel {
 };
 
 Lista *CriaLista(){
-    Lista *l = (Lista *)malloc(sizeof(Lista));
-    if(!l) return NULL;
-    l->next = l->prod = NULL;
-    return l;
+    return NULL;
 }
 
-void InsereListaRec(Lista *l, tProduto *p){
+Lista *InsereListaRec(Lista *l, tProduto *p){
     if(l == NULL){
-        l->prod = p;
-        l->next = NULL;
-        return;
+        Lista *c = malloc(sizeof(Lista));
+        c->prod = p;
+        c->next = NULL;
+        return c;
     }
     else {
-        InsereListaRec(l->next, p); //Insere no final
+        l->next = InsereListaRec(l->next, p); //Insere no final
     }
+    return l;
 }
 
 Lista *RetiraListaRec(Lista *l, int cod){
@@ -28,10 +27,11 @@ Lista *RetiraListaRec(Lista *l, int cod){
         if(RetornaCodigo(l->prod) == cod){
             Lista *aux = l;
             l = l->next;
+            LiberaProduto(aux->prod);
             free(aux);
         }
         else {
-            l->next = RetiraDaLista(l->next, cod);
+            l->next = RetiraListaRec(l->next, cod);
         }
     } 
     return l;
@@ -46,8 +46,9 @@ void ImprimeListaRec(Lista *l){
 
 void LiberaListaRec(Lista *l){
     if(l != NULL){
-        
-
+        LiberaListaRec(l->next);
+        LiberaProduto(l->prod); 
+        free(l); 
     }
 }
 

@@ -12,7 +12,7 @@ typedef Cel Lista;
 
 Lista *CriaLista();
 
-void InsereListaRec(Lista *l, tProduto *p);
+Lista *InsereListaRec(Lista *l, tProduto *p);
 
 Lista *RetiraListaRec(Lista *l, int cod);
 

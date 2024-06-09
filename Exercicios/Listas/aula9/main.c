@@ -21,16 +21,21 @@ int main(){
 
         if(option == 1){
             tProduto *prod = CriaProduto();
-            lista = InsereItemNaLista(lista, prod);/////
+            lista = InsereListaRec(lista, prod);
         }
         else if(option == 2){
             int cod;
             printf("Digite o codigo do produto que deseja retirar:");
             scanf("%d", &cod);
-            lista = RetiraListaRec(lista, cod);
+            RetiraListaRec(lista, cod);
         }
         else if(option == 3){
-            ImprimeListaRec(lista);
+            if(lista){
+                ImprimeListaRec(lista);
+            }
+            else {
+                printf("Lista vazia!\n");
+            }   
         }
         else if(option == 4){
             LiberaListaRec(lista);

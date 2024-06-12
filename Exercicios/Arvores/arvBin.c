@@ -44,11 +44,17 @@ int folhas(Arv* arv){
 }
 
 int ocorrencias(Arv* arv, char* nome){
-
+    if(estaVazia(arv)){
+        return 0;
+    }
+    if(pertence(arv, nome)){
+        return 1 + ocorrencias(arv->esq, nome) + ocorrencias(arv->dir, nome);
+    }
+    return ocorrencias(arv->esq, nome) + ocorrencias(arv->dir, nome);
 }
 
 int altura(Arv* arv){
-    
+
 }
 
 void imprimeArvore(Arv *arv){

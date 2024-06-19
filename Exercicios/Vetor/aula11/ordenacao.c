@@ -23,6 +23,20 @@ int linear_search(int *vet, int tam, int elem){
     return -1;
 }
 
-void binary_search(int *vet, int tam, int elem){
-    
+int binary_search(int *vet, int elem, int inicio, int fim){
+    if(inicio <= fim){
+        int meio = (inicio + fim)/2;
+        if(vet[meio] > elem){ 
+            return binary_search(vet, elem, inicio, meio -1);
+        }
+        else if(vet[meio] < elem){
+            return binary_search(vet, elem, meio + 1, fim);
+        }
+        else {
+            return meio;
+        }
+    }
+    else {
+        return -1;
+    }
 }

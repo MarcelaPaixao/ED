@@ -22,7 +22,7 @@ int main(){
     }
     printf("\n");
 
-    idx_elem = binary_search(vet, vet[5], 0, TAM-1);
+    idx_elem = binary_search(vet, vet[3], 0, TAM-1);
     printf("idx elemento: %d\n", idx_elem);
 
     return 0;

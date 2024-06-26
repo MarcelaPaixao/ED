@@ -56,15 +56,20 @@ ABB *retira(ABB* arv, int mat){
             arv = NULL; //testar sem isso
         }
         else if(!arv->esq){
-            
+            ABB *t = arv;
+            arv = arv->dir;
+            free(t);
         }
         else if(!arv->dir){
-
+            ABB *t = arv;
+            arv = arv->esq;
+            free(t);
         }
         else {
-
+            
         }
     }
+    return arv;
 }
 
 void imprimeArvore(ABB *arv){

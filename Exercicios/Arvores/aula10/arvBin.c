@@ -54,7 +54,7 @@ int ocorrencias(Arv* arv, char* nome){
 }
 
 int altura(Arv* arv){
-
+ 
 }
 
 void imprimeArvore(Arv *arv){

@@ -2,28 +2,28 @@
 #include <stdlib.h>
 #include "ordenacao.h"
 
-#define TAM 10
+#define TAM 1000000
+#define ELEM 45
 
 int main(){
     int vet[TAM];
+    
+    printf("Vetor desordenado:\n");
     for(int i = 0; i < TAM; i++){
         vet[i] = rand() % 100;
         printf("%d ", vet[i]);
     }
-    printf("\n");
-
-    int idx_elem = linear_search(vet, TAM, vet[3]);
-    printf("idx elemento: %d\n", idx_elem);
 
     bubble_sort(vet, TAM);
+    //quick_sort(vet, TAM);
 
+    printf("\nVetor ordenado:\n");
     for(int i = 0; i < TAM; i++){
         printf("%d ", vet[i]);
     }
-    printf("\n");
 
-    idx_elem = binary_search(vet, vet[3], 0, TAM-1);
-    printf("idx elemento: %d\n", idx_elem);
+    //printf("\nidx elemento: %d\n", linear_search(vet, TAM, ELEM));
+    //printf("idx elemento: %d\n", binary_search(vet, ELEM, 0, TAM-1));
 
     return 0;
 }

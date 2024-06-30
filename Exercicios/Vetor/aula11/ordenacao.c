@@ -23,14 +23,14 @@ int linear_search(int *vet, int tam, int elem){
     return -1;
 }
 
-int binary_search(int *vet, int elem, int inicio, int fim){
-    if(inicio <= fim){
-        int meio = (inicio + fim)/2;
+int binary_search(int *vet, int elem, int idx_inic, int idx_fim){
+    if(idx_inic <= idx_fim){
+        int meio = (idx_inic + idx_fim)/2;
         if(vet[meio] > elem){ 
-            return binary_search(vet, elem, inicio, meio -1);
+            return binary_search(vet, elem, idx_inic, meio -1);
         }
         else if(vet[meio] < elem){
-            return binary_search(vet, elem, meio + 1, fim);
+            return binary_search(vet, elem, meio + 1, idx_fim);
         }
         else {
             return meio;

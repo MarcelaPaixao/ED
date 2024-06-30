@@ -12,7 +12,9 @@ void bubble_sort(int *vet, int tam){
     }
 }
 
-void quick_sort(int *vet, int tam);
+void quick_sort(int *vet, int tam){
+
+}
 
 int linear_search(int *vet, int tam, int elem){
     for(int i = 0; i < tam; i++){

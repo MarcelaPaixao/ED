@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ordenacao.h"
 
-#define TAM 1000000
+#define TAM 100000
 #define ELEM 45
 
 int main(){
@@ -23,7 +23,7 @@ int main(){
     }
 
     //printf("\nidx elemento: %d\n", linear_search(vet, TAM, ELEM));
-    //printf("idx elemento: %d\n", binary_search(vet, ELEM, 0, TAM-1));
+    printf("\nidx elemento: %d\n", binary_search(vet, ELEM, 0, TAM-1));
 
     return 0;
 }

@@ -18,7 +18,7 @@ void ImprimeAluno(Aluno *a){
     printf("Aluno: %s, Matricula: %d\n", a->nome, a->mat);
 }
 
-int *ComparaNomes(Aluno *a, char *nome2){
+int ComparaNomes(Aluno *a, char *nome2){
     if(!a) return 0;
     if(strcmp(a->nome, nome2) == 0){
         return 0;
@@ -28,7 +28,7 @@ int *ComparaNomes(Aluno *a, char *nome2){
     }
 }
 
-int *ComparaMatricula(Aluno *a1, int mat){
+int ComparaMatricula(Aluno *a1, int mat){
     if(a1->mat == mat){
         return 0;
     }

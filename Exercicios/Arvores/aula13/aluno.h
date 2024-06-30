@@ -11,13 +11,14 @@ Aluno *CriaAluno(char *nome, int mat);
 
 void ImprimeAluno(Aluno *a);
 
-int *ComparaNomes(Aluno *a, char *nome);
+int ComparaNomes(Aluno *a, char *nome);
+
 /*
 Se a1->mat == mat, retorna 0
 Se a1->mat > mat, retorna 1
 Se a1->mat < mat, retorna -1
 */
-int *ComparaMatricula(Aluno *a1, int mat);
+int ComparaMatricula(Aluno *a1, int mat);
 
 int RetornaMatricula(Aluno *a);
 

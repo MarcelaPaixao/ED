@@ -18,6 +18,8 @@ ABB *retira(ABB* arv, int mat);
 
 void imprimeArvore(ABB *arv);
 
+int estaVazia(ABB* arv);
+
 ABB *liberaArvore(ABB *arv);
 
 #endif 

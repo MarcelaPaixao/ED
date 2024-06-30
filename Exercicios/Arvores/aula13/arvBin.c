@@ -20,10 +20,10 @@ ABB *insere(ABB* arv, Aluno *aluno){
         arv = criaArvore(aluno, NULL, NULL);
         return arv;
     }
-    else if(ComparaMatricula(arv->aluno, RetornaMatricula(aluno)) > 0){
+    else if(ComparaMatricula(arv->aluno, RetornaMatricula(aluno)) <= 0){
         arv->dir = insere(arv->dir, aluno);
     }
-    else if(ComparaMatricula(arv->aluno, RetornaMatricula(aluno)) < 0){
+    else if(ComparaMatricula(arv->aluno, RetornaMatricula(aluno)) > 0){
         arv->esq = insere(arv->esq, aluno);
     }
     return arv;
@@ -53,7 +53,7 @@ ABB *retira(ABB* arv, int mat){
     else { //Achou
         if(!arv->esq && !arv->dir){
             free(arv);
-            arv = NULL; //testar sem isso
+            arv = NULL; 
         }
         else if(!arv->esq){
             ABB *t = arv;
@@ -66,7 +66,14 @@ ABB *retira(ABB* arv, int mat){
             free(t);
         }
         else {
-            
+            ABB *t = arv->esq;
+            while(t->dir){
+                t = t->dir;
+            }
+            Aluno *a = arv->aluno;
+            arv->aluno = t->aluno;
+            t->aluno = a;
+            arv->esq = retira(arv->esq, mat);
         }
     }
     return arv;
@@ -78,6 +85,10 @@ void imprimeArvore(ABB *arv){
         ImprimeAluno(arv->aluno);
         imprimeArvore(arv->dir);
     }
+}
+
+int estaVazia(ABB* arv){
+    return arv == NULL;
 }
 
 ABB *liberaArvore(ABB *arv){

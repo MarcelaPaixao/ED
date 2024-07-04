@@ -19,13 +19,13 @@ void ImprimeAluno(void *a){
     printf("Aluno: %s, Matricula: %d\n", aluno->nome, aluno->mat);
 }
 
-int ComparaMatricula(void *a, void *mat){
-    Aluno *aluno = (Aluno*) a;
-    int matricula = (int)mat;
-    if(aluno->mat == matricula){
+int ComparaMatricula(void *a1, void *a2){
+    Aluno *aluno1 = (Aluno*) a1;
+    Aluno *aluno2 = (Aluno*) a2;
+    if(aluno1->mat == aluno2->mat){
         return 0;
     }
-    else if(aluno->mat < matricula){
+    else if(aluno1->mat < aluno2->mat){
         return 1;
     }
     else {

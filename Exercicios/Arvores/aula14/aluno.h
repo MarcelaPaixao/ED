@@ -12,11 +12,11 @@ Aluno *CriaAluno(char *nome, int mat);
 void ImprimeAluno(void *a);
 
 /*
-Se a->mat == mat, retorna 0
-Se a->mat < mat, retorna 1
-Se a->mat > mat, retorna -1
+Se a1->mat == a2->mat, retorna 0
+Se a1->mat < a2->mat, retorna 1
+Se a1->mat > a2->mat, retorna -1
 */
-int ComparaMatricula(void *a, void *mat);
+int ComparaMatricula(void *a1, void *a2);
 
 int RetornaMatricula(void *a);
 

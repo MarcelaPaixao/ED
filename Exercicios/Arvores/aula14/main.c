@@ -21,7 +21,9 @@ int main(){
 
     imprimeArvore(arvRaiz);
 
-    ABB *arvFilho = busca(arvRaiz, 333);
+    //Aluno *a7 = CriaAluno("Mona", 111); 
+    //ABB *arvFilho = busca(arvRaiz, a7); //Aluno que não deve ser encontrado
+    ABB *arvFilho = busca(arvRaiz, a5);   //Aluno que deve ser encontrado
 
     if(arvFilho){
         printf("\n");
@@ -29,12 +31,12 @@ int main(){
         printf("\n");
     }
     else {
-        printf("Matricula nao encontrada!\n");
+        printf("\nAluno nao encontrado!\n\n");
     }
 
-    //arvRaiz = retira(arvRaiz, 444); //Nó folha
-    //arvRaiz = retira(arvRaiz, 777); //Nó com 1 filho
-    arvRaiz = retira(arvRaiz, 333); //Nó com 2 filhos
+    //arvRaiz = retira(arvRaiz, a4); //Nó folha
+    //arvRaiz = retira(arvRaiz, a3); //Nó com 1 filho
+    arvRaiz = retira(arvRaiz, a2); //Nó com 2 filhos
 
     imprimeArvore(arvRaiz);
 
@@ -46,6 +48,7 @@ int main(){
     LiberaAluno(a4);
     LiberaAluno(a5);
     LiberaAluno(a6);
+    //LiberaAluno(a7);
 
     return 0;
 }

@@ -7,7 +7,11 @@
 
 typedef struct palavra Palavra;
 
-Palavra *InicializaPalavra();
+Palavra *InicializaPalavra(char *str);
+
+Palavra *buscaPalavra(Palavra *p, char *str);
+
+Palavra *inserePalavraLista(Palavra *lista, Palavra *p);
 
 char *RetornaString(Palavra *p);
 

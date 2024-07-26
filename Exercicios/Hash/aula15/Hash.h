@@ -9,8 +9,8 @@ typedef struct hash Hash;
 
 Hash *InicializaHash(int tam);
 
-void InserePalavraHash(Hash *h, Palavra *p);
+Palavra *acessa(Hash *h, char *str);
 
-void LiberaHash(Hash *tab);
+void LiberaHash(Hash *h);
 
 #endif

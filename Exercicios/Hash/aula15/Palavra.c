@@ -1,21 +1,37 @@
 #include "Palavra.h"
 
 struct palavra {
-    char *pal;
+    char *string;
     int n;
     struct palavra *prox;
 };
 
-Palavra *InicializaPalavra(char *string){
+Palavra *InicializaPalavra(char *str){
     Palavra *p = malloc(sizeof(Palavra));
     p->n = 0;
-    p->pal = strdup(string);
+    p->string = strdup(str);
     p->prox = NULL;
     return p;
 }
 
+Palavra *buscaPalavra(Palavra *pal, char *str){
+    Palavra *p;
+    for(p = pal; p != NULL; p = p->prox){
+        if (strcmp(p->string, str) == 0){
+            return p;
+        }
+    }
+    return NULL;
+}
+
+//insere sempre no inicio da lista
+Palavra *inserePalavraLista(Palavra *lista, Palavra *p){
+    p->prox = lista;
+    return p;
+}
+
 char *RetornaString(Palavra *p){
-    return p->pal;
+    return p->string;
 }
 
 int RetornaOcorrencias(Palavra *p){
@@ -32,7 +48,7 @@ void LiberaListaDePalavra(Palavra *p){
     Palavra *t;
     while(aux){
         t = aux->prox;
-        free(aux->pal);
+        free(aux->string);
         free(aux);
         aux = t;
     }

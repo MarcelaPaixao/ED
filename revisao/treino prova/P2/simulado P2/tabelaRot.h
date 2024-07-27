@@ -10,12 +10,12 @@ typedef struct pacote Pacote;
 
 Hash *InicHash(int size);
 
-void insereHash(Hash *t, int key);
+Hash *insereHash(Hash *t, int orig, int nextHop);
 
-void liberaPacotes(Pacote **p);
+int buscaDestino(Hash *t, int orig);
+
+void liberaPacotes(Pacote *p);
 
 void liberaHash(Hash *t);
-
-void imprimeHash(Hash *t);
 
 #endif

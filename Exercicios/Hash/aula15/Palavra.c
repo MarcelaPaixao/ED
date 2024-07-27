@@ -24,7 +24,6 @@ Palavra *buscaPalavra(Palavra *pal, char *str){
     return NULL;
 }
 
-//insere sempre no inicio da lista
 Palavra *inserePalavraLista(Palavra *lista, Palavra *p){
     p->prox = lista;
     return p;
@@ -53,3 +52,9 @@ void LiberaListaDePalavra(Palavra *p){
         aux = t;
     }
 } 
+
+void imprimeListaPalavra(Palavra *pal){
+    for(Palavra* p = pal; p; p = p->prox){
+        printf("%s (%d ocorrencias)\n", p->string, p->n);
+    }
+}

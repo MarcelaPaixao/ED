@@ -7,7 +7,7 @@ struct hash{
 
 Hash *InicializaHash(int tam){
     Hash *h = malloc(sizeof(Hash));
-    h->tam = 0;
+    h->tam = tam;
     h->vet = (Palavra**)malloc(tam*sizeof(Palavra*));
     for(int i=0; i < tam; i++){
         h->vet[i] = NULL;
@@ -32,11 +32,18 @@ Palavra *acessa(Hash *h, char *str){
         p = InicializaPalavra(str);
         h->vet[idx] = inserePalavraLista( h->vet[idx], p);
     }
-    
+    AtualizaOcorrencias(p);
     //se a palara já existe ela simplesmente é retornada
-    
-    //independente de existir ou não,  ela só tem as corrências incrementadas na main
     return p;
+}
+
+void ImprimeHash(Hash *h){
+     if(!h)return;
+    for(int i=0; i < h->tam; i++){
+        printf("indice %d:\n", i);
+        imprimeListaPalavra(h->vet[i]);
+        printf("\n");
+    }
 }
 
 void LiberaHash(Hash *h){

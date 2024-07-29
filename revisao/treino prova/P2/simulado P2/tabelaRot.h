@@ -10,7 +10,7 @@ typedef struct pacote Pacote;
 
 Hash *InicHash(int size);
 
-Hash *insereHash(Hash *t, int orig, int nextHop);
+void insereHash(Hash *t, int orig, int nextHop);
 
 int buscaDestino(Hash *t, int orig);
 

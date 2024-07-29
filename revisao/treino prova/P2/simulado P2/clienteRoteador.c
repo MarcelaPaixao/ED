@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
     Hash *hash = InicHash(TAMH);
     int origem, nextHop;
     while(fscanf(arqEnderecos, "%d %d", &origem, &nextHop) == 2){
-        hash = insereHash(hash, origem, nextHop);
+        insereHash(hash, origem, nextHop);
     }
 
     FILE *arqEntrada = fopen("input.txt","r");

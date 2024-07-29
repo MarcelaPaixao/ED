@@ -24,7 +24,7 @@ Hash *InicHash(int tam){
     return h;
 }
 
-Hash *insereHash(Hash *h, int orig, int nextHop){
+void insereHash(Hash *h, int orig, int nextHop){
     int idx = hashFunct(h, orig);
 
     Pacote *novo = malloc(sizeof(Pacote));
@@ -39,7 +39,6 @@ Hash *insereHash(Hash *h, int orig, int nextHop){
         novo->next = h->pacotes[idx];
         h->pacotes[idx] = novo;
     }
-    return h;
 }
 
 int buscaDestino(Hash *h, int origem){
